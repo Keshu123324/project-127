@@ -1,9 +1,10 @@
 from bs4 import BeautifulSoup
 import time
 import csv
+from selenium import webdriver
 
 start_url = "https://exoplanets.nasa.gov/exoplanet-catalog/"
-browser = webdriver.Chrome("C:\Users\DOCTOR PC\Documents\pythonprojects\chromedriver_win32\chromedriver")
+browser = webdriver.Edge("C:\\Users\\DOCTOR PC\\Downloads\\edgedriver_win64\\msedgedriver.exe")
 
 def scrape():
     headers = ["Name","Distance","Mass","Radius"]
@@ -24,7 +25,7 @@ def scrape():
             stars_data.append(temp_list)
         browser.find_element_by_xpath('//*[@id="primary_column"]/footer/div/div/div/nav/span[2]/a').click()
     with open("scrapper_2.csv", "w") as f:
-        csvwriter = csv.writer(f)''
+        csvwriter = csv.writer(f)
         csvwriter.writerow(headers)
         csvwriter.writerows(stars_data)
 
